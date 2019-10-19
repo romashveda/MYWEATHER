@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="ZLa-pn-LUc">
+            <objects>
+                <viewController id="jH5-1w-zhG" customClass="LoginViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EIy-5E-K6x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for Tweeter API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-BG-ePz">
+                                <rect key="frame" x="67" y="337" width="327" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <viewLayoutGuide key="safeArea" id="j9d-fo-9rE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4t6-kl-QGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71.014492753623188" y="-260.49107142857144"/>
+        </scene>
+        <!--Locations View Controller-->
+        <scene sceneID="Gga-Yj-Q5V">
+            <objects>
+                <viewController id="gzF-nw-Gbd" customClass="LocationsViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="86a-yB-EIg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXa-dY-YJt">
+                                <rect key="frame" x="0.0" y="104" width="414" height="668"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gzF-nw-Gbd" id="QxB-vp-MRP"/>
+                                    <outlet property="delegate" destination="gzF-nw-Gbd" id="UPo-91-G28"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-Nb-Rf7">
+                                <rect key="frame" x="31" y="792" width="352" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9YI-jI-r37"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addLocationTapped:" destination="gzF-nw-Gbd" eventType="touchUpInside" id="VKo-Dd-lR4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yBU-5O-c4L" firstAttribute="bottom" secondItem="BNl-Nb-Rf7" secondAttribute="bottom" constant="20" id="0c8-OT-RPV"/>
+                            <constraint firstItem="eXa-dY-YJt" firstAttribute="top" secondItem="yBU-5O-c4L" secondAttribute="top" constant="60" id="Aks-jb-XqS"/>
+                            <constraint firstItem="BNl-Nb-Rf7" firstAttribute="top" secondItem="eXa-dY-YJt" secondAttribute="bottom" constant="20" id="D7C-FU-uFw"/>
+                            <constraint firstItem="eXa-dY-YJt" firstAttribute="leading" secondItem="yBU-5O-c4L" secondAttribute="leading" id="TLg-gL-Bzd"/>
+                            <constraint firstItem="yBU-5O-c4L" firstAttribute="trailing" secondItem="eXa-dY-YJt" secondAttribute="trailing" id="YMe-p9-BXO"/>
+                            <constraint firstItem="BNl-Nb-Rf7" firstAttribute="width" secondItem="86a-yB-EIg" secondAttribute="width" multiplier="0.85" id="aBw-wc-UUw"/>
+                            <constraint firstItem="BNl-Nb-Rf7" firstAttribute="centerX" secondItem="yBU-5O-c4L" secondAttribute="centerX" id="hZ5-tV-Ut9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yBU-5O-c4L"/>
+                    </view>
+                    <connections>
+                        <outlet property="addLocationButton" destination="BNl-Nb-Rf7" id="JxM-Dw-QYH"/>
+                        <outlet property="tableView" destination="eXa-dY-YJt" id="cPN-AK-rtP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJE-e2-Upv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="-260"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aoz-3D-yfz">
+            <objects>
+                <viewController id="eZ9-oW-TTs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6YK-PQ-6cy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l3P-JA-m4r">
+                                <rect key="frame" x="0.0" y="84" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l3P-JA-m4r" firstAttribute="trailing" secondItem="cZJ-Hd-ccg" secondAttribute="trailing" id="BDh-7c-V3l"/>
+                            <constraint firstItem="l3P-JA-m4r" firstAttribute="top" secondItem="cZJ-Hd-ccg" secondAttribute="top" constant="40" id="kCO-LM-c2v"/>
+                            <constraint firstItem="l3P-JA-m4r" firstAttribute="leading" secondItem="cZJ-Hd-ccg" secondAttribute="leading" id="uzw-8y-BtF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cZJ-Hd-ccg"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="5f3-eg-y9W" id="S70-ES-VWm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVc-S6-mXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="5f3-eg-y9W">
+                    <connections>
+                        <outlet property="delegate" destination="eZ9-oW-TTs" id="gVF-xi-rFa"/>
+                        <outlet property="searchContentsController" destination="eZ9-oW-TTs" id="OV8-KL-r0F"/>
+                        <outlet property="searchResultsDataSource" destination="eZ9-oW-TTs" id="os8-9Z-ZFd"/>
+                        <outlet property="searchResultsDelegate" destination="eZ9-oW-TTs" id="gVp-Y1-sBu"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1472" y="-260"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZE2-sP-3pd">
+            <objects>
+                <viewController id="KWg-Rk-xe4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bfM-Hz-akn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Qq7-9J-JfT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X61-4z-g4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="-260"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5Gd-mG-faA">
+            <objects>
+                <viewController id="qlb-L5-Ekw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSi-au-xa9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="e54-AJ-eYu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQA-TW-P74" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3050" y="-261"/>
+        </scene>
+    </scenes>
+</document>

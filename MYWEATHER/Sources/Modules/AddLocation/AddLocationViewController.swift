@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddLocationViewController.swift
 //  MYWEATHER
 //
 //  Created by Roman Shveda on 10/19/19.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class AddLocationViewController: UIViewController, Storyboarded, Coordinated {
+    
+    weak var coordinator: MainCoordinator!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
 
 }
-
