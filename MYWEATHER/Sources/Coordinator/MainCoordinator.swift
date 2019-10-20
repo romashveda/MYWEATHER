@@ -20,6 +20,8 @@ final class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
+    var selectedPlaces: [City] = []
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -28,6 +30,10 @@ final class MainCoordinator: Coordinator {
         let vc = LoginViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
     }
     
     func openLocations() {
@@ -42,9 +48,10 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func openWeatherDetails(city: Any) {
+    func openWeatherDetails(city: City) {
         let vc = WeatherDetailsViewController.instantiate()
         vc.coordinator = self
+        vc.city = city
         navigationController.pushViewController(vc, animated: true)
     }
     

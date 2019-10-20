@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="ZLa-pn-LUc">
             <objects>
-                <viewController id="jH5-1w-zhG" customClass="LoginViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="jH5-1w-zhG" customClass="LoginViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EIy-5E-K6x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,13 +37,13 @@
         <!--Locations View Controller-->
         <scene sceneID="Gga-Yj-Q5V">
             <objects>
-                <viewController id="gzF-nw-Gbd" customClass="LocationsViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationsViewController" id="gzF-nw-Gbd" customClass="LocationsViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="86a-yB-EIg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXa-dY-YJt">
-                                <rect key="frame" x="0.0" y="104" width="414" height="668"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXa-dY-YJt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gzF-nw-Gbd" id="QxB-vp-MRP"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-Nb-Rf7">
-                                <rect key="frame" x="31" y="792" width="352" height="50"/>
+                                <rect key="frame" x="31" y="797" width="352" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9YI-jI-r37"/>
@@ -67,9 +67,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yBU-5O-c4L" firstAttribute="bottom" secondItem="BNl-Nb-Rf7" secondAttribute="bottom" constant="20" id="0c8-OT-RPV"/>
-                            <constraint firstItem="eXa-dY-YJt" firstAttribute="top" secondItem="yBU-5O-c4L" secondAttribute="top" constant="60" id="Aks-jb-XqS"/>
-                            <constraint firstItem="BNl-Nb-Rf7" firstAttribute="top" secondItem="eXa-dY-YJt" secondAttribute="bottom" constant="20" id="D7C-FU-uFw"/>
+                            <constraint firstItem="yBU-5O-c4L" firstAttribute="bottom" secondItem="BNl-Nb-Rf7" secondAttribute="bottom" constant="15" id="0c8-OT-RPV"/>
+                            <constraint firstItem="eXa-dY-YJt" firstAttribute="top" secondItem="yBU-5O-c4L" secondAttribute="top" id="Aks-jb-XqS"/>
+                            <constraint firstItem="BNl-Nb-Rf7" firstAttribute="top" secondItem="eXa-dY-YJt" secondAttribute="bottom" constant="15" id="D7C-FU-uFw"/>
                             <constraint firstItem="eXa-dY-YJt" firstAttribute="leading" secondItem="yBU-5O-c4L" secondAttribute="leading" id="TLg-gL-Bzd"/>
                             <constraint firstItem="yBU-5O-c4L" firstAttribute="trailing" secondItem="eXa-dY-YJt" secondAttribute="trailing" id="YMe-p9-BXO"/>
                             <constraint firstItem="BNl-Nb-Rf7" firstAttribute="width" secondItem="86a-yB-EIg" secondAttribute="width" multiplier="0.85" id="aBw-wc-UUw"/>
@@ -86,47 +86,58 @@
             </objects>
             <point key="canvasLocation" x="714" y="-260"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Location View Controller-->
         <scene sceneID="aoz-3D-yfz">
             <objects>
-                <viewController id="eZ9-oW-TTs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" id="eZ9-oW-TTs" customClass="AddLocationViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6YK-PQ-6cy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l3P-JA-m4r">
-                                <rect key="frame" x="0.0" y="84" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4hq-il-MAf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="eZ9-oW-TTs" id="9RB-8X-tjO"/>
+                                    <outlet property="delegate" destination="eZ9-oW-TTs" id="ZbV-To-zTB"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSo-WC-Rf5">
+                                <rect key="frame" x="41.5" y="797" width="331" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SvR-zk-trI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Current Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l3P-JA-m4r" firstAttribute="trailing" secondItem="cZJ-Hd-ccg" secondAttribute="trailing" id="BDh-7c-V3l"/>
-                            <constraint firstItem="l3P-JA-m4r" firstAttribute="top" secondItem="cZJ-Hd-ccg" secondAttribute="top" constant="40" id="kCO-LM-c2v"/>
-                            <constraint firstItem="l3P-JA-m4r" firstAttribute="leading" secondItem="cZJ-Hd-ccg" secondAttribute="leading" id="uzw-8y-BtF"/>
+                            <constraint firstItem="cSo-WC-Rf5" firstAttribute="centerX" secondItem="6YK-PQ-6cy" secondAttribute="centerXWithinMargins" id="ENo-yt-waL"/>
+                            <constraint firstItem="4hq-il-MAf" firstAttribute="leading" secondItem="cZJ-Hd-ccg" secondAttribute="leading" id="G6h-YC-9YC"/>
+                            <constraint firstItem="cZJ-Hd-ccg" firstAttribute="trailing" secondItem="4hq-il-MAf" secondAttribute="trailing" id="LC8-2f-IEf"/>
+                            <constraint firstItem="4hq-il-MAf" firstAttribute="top" secondItem="cZJ-Hd-ccg" secondAttribute="top" id="e8k-OQ-kxq"/>
+                            <constraint firstItem="cSo-WC-Rf5" firstAttribute="width" secondItem="6YK-PQ-6cy" secondAttribute="width" multiplier="0.8" id="qbW-la-B5N"/>
+                            <constraint firstItem="cSo-WC-Rf5" firstAttribute="top" secondItem="4hq-il-MAf" secondAttribute="bottom" constant="15" id="yak-nw-Ci0"/>
+                            <constraint firstItem="cZJ-Hd-ccg" firstAttribute="bottom" secondItem="cSo-WC-Rf5" secondAttribute="bottom" constant="15" id="zng-Dv-6Dr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cZJ-Hd-ccg"/>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="5f3-eg-y9W" id="S70-ES-VWm"/>
+                        <outlet property="tableView" destination="4hq-il-MAf" id="kf0-kD-dk4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVc-S6-mXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="5f3-eg-y9W">
-                    <connections>
-                        <outlet property="delegate" destination="eZ9-oW-TTs" id="gVF-xi-rFa"/>
-                        <outlet property="searchContentsController" destination="eZ9-oW-TTs" id="OV8-KL-r0F"/>
-                        <outlet property="searchResultsDataSource" destination="eZ9-oW-TTs" id="os8-9Z-ZFd"/>
-                        <outlet property="searchResultsDelegate" destination="eZ9-oW-TTs" id="gVp-Y1-sBu"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1472" y="-260"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather Details View Controller-->
         <scene sceneID="ZE2-sP-3pd">
             <objects>
-                <viewController id="KWg-Rk-xe4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherDetailsViewController" id="KWg-Rk-xe4" customClass="WeatherDetailsViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfM-Hz-akn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="2278" y="-260"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="5Gd-mG-faA">
             <objects>
-                <viewController id="qlb-L5-Ekw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="qlb-L5-Ekw" customClass="ProfileViewController" customModule="MYWEATHER" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hSi-au-xa9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
