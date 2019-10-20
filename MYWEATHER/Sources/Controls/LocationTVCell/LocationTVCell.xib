@@ -31,7 +31,6 @@
                     <constraint firstItem="s7O-ps-EMv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fKa-ff-WUM"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.76470588240000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="s7O-ps-EMv" id="myl-Yg-Osn"/>

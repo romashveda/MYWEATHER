@@ -10,12 +10,40 @@ import UIKit
 
 final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordinated {
     
+    @IBOutlet private var temperatureLabel: UILabel!
+    @IBOutlet private var cityNameLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var iconImageView: UIImageView!
+    
     weak var coordinator: MainCoordinator!
     var city: City!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getCityData()
     }
+    
   
+    func getCityData() {
+        WeatherAPIManager.getWeatherData(for: city) { [weak self] (_, errorString, responce) in
+            guard let strongSelf = self, errorString == nil else {
+                self?.coordinator.presentAlertWithMessage(message: errorString!)
+                return
+            }
+            if let imageString = responce?.weather.first?.icon {
+                WeatherAPIManager.getImage(from: imageString) { image in
+                    DispatchQueue.main.async {
+                        strongSelf.iconImageView.image = image
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                guard let doubleValue = responce?.main.temp else { return }
+                let intValue = Int(doubleValue - 273.15)
+                strongSelf.temperatureLabel.text = intValue.description
+                strongSelf.cityNameLabel.text = responce?.name
+                strongSelf.descriptionLabel.text = responce?.weather.first?.description
+            }
+        }
+    }
 }

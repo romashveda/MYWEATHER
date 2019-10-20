@@ -20,6 +20,7 @@ final class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
+    var allCities: [City] = []
     var selectedPlaces: [City] = []
     
     init(navigationController: UINavigationController) {
@@ -36,13 +37,24 @@ final class MainCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
     
+    func presentAlertWithMessage(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style:  .default)
+        alert.addAction(okAction)
+        navigationController.present(alert, animated: true, completion: nil)
+    }
+    
     func openLocations() {
+        WeatherAPIManager.getCities { [weak self] cityArray in
+            self?.allCities = cityArray
+        }
         let vc = LocationsViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func openAddLocations() {
+        guard allCities.count != 0 else { return }
         let vc = AddLocationViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)

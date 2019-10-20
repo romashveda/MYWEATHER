@@ -29,7 +29,7 @@ final class AddLocationViewController: UIViewController, Storyboarded, Coordinat
     }
 
     private func filterContentForSearchText(_ searchText: String) {
-        filteredCities = City.cities().filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        filteredCities = coordinator.allCities.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
         tableView.reloadData()
     }
 }
