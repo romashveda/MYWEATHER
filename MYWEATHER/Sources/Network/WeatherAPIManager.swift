@@ -13,7 +13,7 @@ final class WeatherAPIManager: BaseNetworkClient {
     static private let weatherURL = "https://api.openweathermap.org/data/2.5/weather"
     static let apiKey = "7d5057aa2baae3c8b38374f3cbfc7233"
     
-    static func getWeatherData(for city: City, completion: @escaping APIResponseClosure<WeatherResponce>) {
+    static func getWeatherData(for city: CityMO, completion: @escaping APIResponseClosure<WeatherResponce>) {
         var pathParameters: [String: String] = [:]
         pathParameters["q"] = "\(city.name),\(city.country)"
         pathParameters["APPID"] = apiKey

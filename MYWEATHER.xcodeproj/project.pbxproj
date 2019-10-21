@@ -11,6 +11,7 @@
 		191B1A79235CE9AD000DEA5B /* WeatherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B1A78235CE9AD000DEA5B /* WeatherAPIManager.swift */; };
 		191B1A7C235D242E000DEA5B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B1A7B235D242E000DEA5B /* CacheManager.swift */; };
 		191B1A7E235D36DC000DEA5B /* KeychainServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B1A7D235D36DC000DEA5B /* KeychainServices.swift */; };
+		191B1A84235D9DFF000DEA5B /* PersistenseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191B1A83235D9DFF000DEA5B /* PersistenseService.swift */; };
 		19353E7A235B3B7000B22E69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19353E79235B3B7000B22E69 /* AppDelegate.swift */; };
 		19353E82235B3B7000B22E69 /* MYWEATHER.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19353E80235B3B7000B22E69 /* MYWEATHER.xcdatamodeld */; };
 		19353E84235B3B7100B22E69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19353E83235B3B7100B22E69 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		191B1A78235CE9AD000DEA5B /* WeatherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIManager.swift; sourceTree = "<group>"; };
 		191B1A7B235D242E000DEA5B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		191B1A7D235D36DC000DEA5B /* KeychainServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServices.swift; sourceTree = "<group>"; };
+		191B1A83235D9DFF000DEA5B /* PersistenseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenseService.swift; sourceTree = "<group>"; };
 		19353E76235B3B7000B22E69 /* MYWEATHER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MYWEATHER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19353E79235B3B7000B22E69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19353E81235B3B7000B22E69 /* MYWEATHER.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MYWEATHER.xcdatamodel; sourceTree = "<group>"; };
@@ -90,6 +92,22 @@
 			path = Local;
 			sourceTree = "<group>";
 		};
+		191B1A7F235D9A20000DEA5B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				191B1A80235D9A27000DEA5B /* MO */,
+				191B1A83235D9DFF000DEA5B /* PersistenseService.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		191B1A80235D9A27000DEA5B /* MO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MO;
+			sourceTree = "<group>";
+		};
 		19353E6D235B3B6F00B22E69 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +142,7 @@
 		19353E8E235B667C00B22E69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				191B1A7F235D9A20000DEA5B /* CoreData */,
 				191B1A7A235D2418000DEA5B /* Local */,
 				19353E9F235BA7D300B22E69 /* Controls */,
 				19353E9B235B6CB500B22E69 /* Network */,
@@ -414,6 +433,7 @@
 				19353EA2235BA9E600B22E69 /* AddLocationViewController.swift in Sources */,
 				19353E92235B66DF00B22E69 /* MainCoordinator.swift in Sources */,
 				191B1A7E235D36DC000DEA5B /* KeychainServices.swift in Sources */,
+				191B1A84235D9DFF000DEA5B /* PersistenseService.swift in Sources */,
 				19353EA8235BAA3D00B22E69 /* ProfileViewController.swift in Sources */,
 				191B1A7C235D242E000DEA5B /* CacheManager.swift in Sources */,
 				19353E82235B3B7000B22E69 /* MYWEATHER.xcdatamodeld in Sources */,
@@ -560,6 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F95D26K5WQ;
 				INFOPLIST_FILE = MYWEATHER/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,6 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F95D26K5WQ;
 				INFOPLIST_FILE = MYWEATHER/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

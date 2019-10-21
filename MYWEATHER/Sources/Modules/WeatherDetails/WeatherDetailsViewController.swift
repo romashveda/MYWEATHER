@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// TODO: show all weatherData properties
 final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordinated {
     
     @IBOutlet private var temperatureLabel: UILabel!
@@ -16,7 +16,7 @@ final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordi
     @IBOutlet private var iconImageView: UIImageView!
     
     weak var coordinator: MainCoordinator!
-    var city: City!
+    var city: CityMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()

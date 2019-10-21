@@ -27,7 +27,7 @@ final class ProfileViewController: UIViewController, Storyboarded, Coordinated {
     override func viewDidLoad() {
         super.viewDidLoad()
         avatarImage.layer.cornerRadius = avatarImage.bounds.height / 2
-        guard let profile = GIDSignIn.sharedInstance()?.currentUser.profile else { return }
+        guard let profile = GIDSignIn.sharedInstance()?.currentUser?.profile else { return }
         nameLabel.text = profile.givenName + profile.familyName
         emailLabel.text = profile.email
         if let url = profile.imageURL(withDimension: 120) {
