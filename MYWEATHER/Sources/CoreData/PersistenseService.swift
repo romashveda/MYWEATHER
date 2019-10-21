@@ -9,10 +9,8 @@
 import UIKit
 import CoreData
 
-enum Entity: String {
-    case Place, Location, City
-}
 
+// TODO: add caching metadata for selected locations and weather data 
 final class PersistenseService {
     private init() {}
     static let shared = PersistenseService()
