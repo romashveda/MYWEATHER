@@ -18,6 +18,8 @@ protocol Coordinator: AnyObject {
 }
 
 final class MainCoordinator: Coordinator {
+    
+    // WOuld be nice to make non-public properties to be private
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -51,6 +53,8 @@ final class MainCoordinator: Coordinator {
     func openLogin() {
         let vc = LoginViewController.instantiate()
         vc.coordinator = self
+        
+        // Why do you have to explicitly set vc to me the one in navigation stack?
         navigationController.pushViewController(vc, animated: true)
         navigationController.setViewControllers([vc], animated: true)
     }
@@ -61,6 +65,8 @@ final class MainCoordinator: Coordinator {
         }
         let vc = LocationsViewController.instantiate()
         vc.coordinator = self
+        
+        // Why do you have to explicitly set vc to me the one in navigation stack?
         navigationController.pushViewController(vc, animated: true)
         navigationController.setViewControllers([vc], animated: true)
     }

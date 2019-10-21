@@ -10,6 +10,7 @@ import UIKit
 
 final class LocationsViewController: UIViewController, Storyboarded, Coordinated {
     
+    // Why do you need explicitly unwrapped weak property ?
     weak var coordinator: MainCoordinator!
     
     @IBOutlet private var tableView: UITableView!

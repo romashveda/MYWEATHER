@@ -25,6 +25,8 @@ final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordi
     
   
     func getCityData() {
+        // Even though the app is very easy it would be nice to have bussines logc + networking somewhere else then in VC
+        
         WeatherAPIManager.getWeatherData(for: city) { [weak self] (_, errorString, responce) in
             guard let strongSelf = self, errorString == nil else {
                 self?.coordinator.presentAlertWithMessage(message: errorString!)

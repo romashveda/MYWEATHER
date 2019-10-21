@@ -20,4 +20,9 @@ final class LocationTVCell: BaseTVCell {
 
     }
     
+    // Would be nice to have this method overloaded and to make sure every UI element are "fresh and cleand" before cell will be reused 
+    
+//    override func prepareForReuse() {
+//
+//    }
 }

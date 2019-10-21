@@ -10,6 +10,7 @@ import UIKit
 
 class BaseTVCell: UITableViewCell {
     
+    // Not sure whether Cell is a right place to search for correspoding Nib file
     class var cellNib: UINib? {
         var nibName = self.description().components(separatedBy: ".").last!
         var nib = UINib(nibName: nibName, bundle: nil)

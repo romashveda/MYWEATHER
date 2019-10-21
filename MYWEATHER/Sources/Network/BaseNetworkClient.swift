@@ -15,6 +15,7 @@ typealias APIResponseClosure<T: Codable> = (_ isSuccess: Bool, _ error: String?,
 
 class BaseNetworkClient: NSObject {
     
+    // Why constans are static ?
     static private let citiesURL = "https://raw.githubusercontent.com/lutangar/cities.json/master/cities.json"
     static private let imageURL = "https://openweathermap.org/img/wn/"
     static private let imageResolution = "@2x.png"
