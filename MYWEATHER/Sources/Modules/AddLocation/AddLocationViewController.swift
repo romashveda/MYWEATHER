@@ -13,15 +13,20 @@ import CoreData
 final class AddLocationViewController: UIViewController, Storyboarded, Coordinated {
     
     weak var coordinator: MainCoordinator!
-    let locationManager = CLLocationManager()
+    lazy var locationManager: CLLocationManager = {
+        let location = CLLocationManager()
+        location.delegate = self
+        location.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        location.activityType = .automotiveNavigation
+        location.distanceFilter = 10.0
+        return location
+    }()
     
     @IBOutlet private var tableView: UITableView!
     
     @IBAction func getCurrentLocation(_ sender: UIButton) {
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
     }
@@ -92,6 +97,7 @@ extension AddLocationViewController: CLLocationManagerDelegate {
             coordinator.presentAlertWithMessage(message: "This location added already")
         } else {
             coordinator.selectedPlaces.append(city)
+            locationManager.stopUpdatingLocation()
             coordinator.popViewController()
         }
     }

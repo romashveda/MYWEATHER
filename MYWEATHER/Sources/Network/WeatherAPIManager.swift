@@ -15,7 +15,12 @@ final class WeatherAPIManager: BaseNetworkClient {
     
     static func getWeatherData(for city: City, completion: @escaping APIResponseClosure<WeatherResponce>) {
         var pathParameters: [String: String] = [:]
-        pathParameters["q"] = "\(city.name),\(city.country)"
+        if city.name == "" {
+            pathParameters["lat"] = city.lat
+            pathParameters["lon"] = city.lng
+        } else {
+            pathParameters["q"] = "\(city.name),\(city.country)"
+        }
         pathParameters["APPID"] = apiKey
         requestWithJSONEncoding(baseURL: weatherURL, method: .get, pathParameters: pathParameters) { (success, errorString, dataAny) in
             guard success, errorString == nil else {

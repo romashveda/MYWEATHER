@@ -66,7 +66,6 @@ final class MainCoordinator: Coordinator {
     }
     
     func openAddLocations() {
-        guard allCities.count != 0 else { return }
         let vc = AddLocationViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
