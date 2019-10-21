@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
@@ -20,6 +21,7 @@ final class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
+//    var user: GIDGoogleUser? = GIDSignIn.sharedInstance()?.currentUser
     var allCities: [City] = []
     var selectedPlaces: [City] = []
     
@@ -28,9 +30,12 @@ final class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = LoginViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        if KeychainServices.loadToken() != nil {
+            GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+            openLocations()
+        } else {
+            openLogin()
+        }
     }
     
     func popViewController() {
@@ -44,6 +49,13 @@ final class MainCoordinator: Coordinator {
         navigationController.present(alert, animated: true, completion: nil)
     }
     
+    func openLogin() {
+        let vc = LoginViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+        navigationController.setViewControllers([vc], animated: true)
+    }
+    
     func openLocations() {
         WeatherAPIManager.getCities { [weak self] cityArray in
             self?.allCities = cityArray
@@ -51,6 +63,7 @@ final class MainCoordinator: Coordinator {
         let vc = LocationsViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
+        navigationController.setViewControllers([vc], animated: true)
     }
     
     func openAddLocations() {

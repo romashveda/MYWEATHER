@@ -22,6 +22,8 @@ final class LocationsViewController: UIViewController, Storyboarded, Coordinated
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(cellType: LocationTVCell.self)
+        addLocationButton.layer.cornerRadius = 10
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(openProfile))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +31,9 @@ final class LocationsViewController: UIViewController, Storyboarded, Coordinated
         tableView.reloadData()
     }
     
+    @objc private func openProfile() {
+        coordinator.openProfile()
+    }
 }
 
 extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {

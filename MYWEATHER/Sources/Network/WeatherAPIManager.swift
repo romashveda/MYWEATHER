@@ -29,18 +29,4 @@ final class WeatherAPIManager: BaseNetworkClient {
             completion(true, nil, response)
         }
     }
-    
-//    static func getCities(completion: @escaping APIResponseClosure<[City]>) {
-//        requestWithJSONEncoding(baseURL: citiesURL, method: .get) { (success, errorString, dataAny) in
-//            guard success, errorString == nil else {
-//                completion(false, errorString!, nil)
-//                return
-//            }
-//            guard let jsonData = dataAny as? [String: AnyObject], let data = try? JSONSerialization.data(withJSONObject: jsonData), let response = try? JSONDecoder().decode([City].self, from: data) else {
-//                completion(false, "decoding error", nil)
-//                return
-//            }
-//            completion(true, nil, response)
-//        }
-//    }
 }
