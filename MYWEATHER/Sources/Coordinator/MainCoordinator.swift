@@ -21,7 +21,6 @@ final class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-//    var user: GIDGoogleUser? = GIDSignIn.sharedInstance()?.currentUser
     var allCities: [City] = []
     var selectedPlaces: [City] = []
     

@@ -17,8 +17,6 @@ final class AddLocationViewController: UIViewController, Storyboarded, Coordinat
     
     @IBOutlet private var tableView: UITableView!
     
-    private var fetchedRC: NSFetchedResultsController<CityMO>!
-    
     @IBAction func getCurrentLocation(_ sender: UIButton) {
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -29,8 +27,7 @@ final class AddLocationViewController: UIViewController, Storyboarded, Coordinat
     }
     
     private let searchController = UISearchController(searchResultsController: nil)
-    private var filteredCities: [CityMO] = []
-    let persistense = PersistenseService.shared
+    private var filteredCities: [City] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,33 +41,20 @@ final class AddLocationViewController: UIViewController, Storyboarded, Coordinat
     }
 
     private func filterContentForSearchText(_ searchText: String) {
-        filteredCities = coordinator.allCities.filter({ $0.name!.lowercased().contains(searchText.lowercased()) })
+        filteredCities = coordinator.allCities.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
         tableView.reloadData()
-    }
-    
-    private func refresh() {
-        let request = CityMO.fetchRequest() as NSFetchRequest<CityMO>
-        let sort = NSSortDescriptor(key: #keyPath(CityMO.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
-        request.sortDescriptors = [sort]
-        do {
-            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: persistense.backContext, sectionNameKeyPath: nil, cacheName: nil)
-            try fetchedRC.performFetch()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
     }
 }
 
 extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return filteredCities.count
-        return fetchedRC.fetchedObjects?.count ?? 0
+        return filteredCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let city = filteredCities[indexPath.row]
-        cell.textLabel?.text = city.name! + " " + city.country!
+        cell.textLabel?.text = city.name + " " + city.country
         return cell
     }
     
@@ -82,7 +66,6 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
            coordinator.selectedPlaces.append(newCity)
            coordinator.popViewController()
         }
-        
     }
 }
 
@@ -104,12 +87,12 @@ extension AddLocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        let city = City(country: "MyLocation", name: "", lat: locValue.latitude.description, lng: locValue.longitude.description)
-//        if coordinator.selectedPlaces.contains(city) {
-//            coordinator.presentAlertWithMessage(message: "This location added already")
-//        } else {
-//            coordinator.selectedPlaces.append(city)
-//            coordinator.popViewController()
-//        }
+        let city = City(country: "MyLocation", name: "", lat: locValue.latitude.description, lng: locValue.longitude.description)
+        if coordinator.selectedPlaces.contains(city) {
+            coordinator.presentAlertWithMessage(message: "This location added already")
+        } else {
+            coordinator.selectedPlaces.append(city)
+            coordinator.popViewController()
+        }
     }
 }

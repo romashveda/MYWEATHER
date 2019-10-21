@@ -16,7 +16,7 @@ final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordi
     @IBOutlet private var iconImageView: UIImageView!
     
     weak var coordinator: MainCoordinator!
-    var city: CityMO!
+    var city: City!
     
     override func viewDidLoad() {
         super.viewDidLoad()

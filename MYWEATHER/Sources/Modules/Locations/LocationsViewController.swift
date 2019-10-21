@@ -44,7 +44,7 @@ extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(cellType: LocationTVCell.self) else { return UITableViewCell() }
         let city = coordinator.selectedPlaces[indexPath.row]
-        cell.nameLabel.text = city.name! + "," + city.country!
+        cell.nameLabel.text = city.name + "," + city.country
         return cell
     }
     
