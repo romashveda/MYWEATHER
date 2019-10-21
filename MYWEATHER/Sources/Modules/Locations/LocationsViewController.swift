@@ -44,7 +44,7 @@ extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.cell(cellType: LocationTVCell.self) else { return UITableViewCell() }
         let city = coordinator.selectedPlaces[indexPath.row]
-        cell.nameLabel.text = city.name
+        cell.nameLabel.text = city.name + "," + city.country
         return cell
     }
     
@@ -55,5 +55,12 @@ extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            coordinator.selectedPlaces.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
     }
 }

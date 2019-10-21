@@ -48,8 +48,13 @@ extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newCity = filteredCities[indexPath.row]
-        coordinator.selectedPlaces.append(newCity)
-        coordinator.popViewController()
+        if coordinator.selectedPlaces.contains(newCity) {
+            coordinator.presentAlertWithMessage(message: "This location added already")
+        } else {
+           coordinator.selectedPlaces.append(newCity)
+           coordinator.popViewController()
+        }
+        
     }
 }
 

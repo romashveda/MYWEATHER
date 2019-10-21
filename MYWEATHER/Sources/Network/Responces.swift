@@ -8,19 +8,31 @@
 
 import Foundation
 
-struct City: Codable {
+struct City: Codable, Equatable {
     let country: String
     let name: String
     let lat: String
     let lng: String
+    
+    static func ==(lhs: City, rhs: City) -> Bool {
+        return lhs.name == rhs.name && lhs.country == rhs.country
+    }
 }
 
 struct WeatherResponce: Codable {
     let weather: [Weather]
     let main: MainData
+    let sys: SYSData
     let id: Double
     let name: String
     let cod: Int
+}
+struct SYSData: Codable {
+    let type: Int
+    let id: Int
+    let country: String
+    let sunrise: Int
+    let sunset: Int
 }
 
 struct Weather: Codable {

@@ -30,7 +30,8 @@ final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordi
                 self?.coordinator.presentAlertWithMessage(message: errorString!)
                 return
             }
-            if let imageString = responce?.weather.first?.icon {
+            guard let responce = responce else { return }
+            if let imageString = responce.weather.first?.icon {
                 WeatherAPIManager.getImage(from: imageString) { image in
                     DispatchQueue.main.async {
                         strongSelf.iconImageView.image = image
@@ -38,11 +39,10 @@ final class WeatherDetailsViewController: UIViewController, Storyboarded, Coordi
                 }
             }
             DispatchQueue.main.async {
-                guard let doubleValue = responce?.main.temp else { return }
-                let intValue = Int(doubleValue - 273.15)
+                let intValue = Int(responce.main.temp - 273.15)
                 strongSelf.temperatureLabel.text = intValue.description
-                strongSelf.cityNameLabel.text = responce?.name
-                strongSelf.descriptionLabel.text = responce?.weather.first?.description
+                strongSelf.cityNameLabel.text = responce.name + "," + responce.sys.country
+                strongSelf.descriptionLabel.text = responce.weather.first?.description
             }
         }
     }
